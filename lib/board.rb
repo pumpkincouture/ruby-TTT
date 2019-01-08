@@ -16,7 +16,11 @@ class Board
   end
 
   def open_spaces
-    cells.select { |cell| cell.empty? }
+    spaces = []
+    cells.each_with_index do |sub_array, idx|
+      spaces << idx if sub_array.empty?
+    end
+    spaces
   end
 
   def full?
@@ -25,6 +29,22 @@ class Board
 
   def clear_cell(cells, move)
     cells[move] = []
+  end
+
+  def cells_marked_with(marker, cells)
+    spaces = []
+    cells.each_with_index do |cell, idx|
+      spaces << idx if cell == marker
+    end
+    spaces
+  end
+
+  def display_row
+    get_board_row
+  end
+
+  def get_board_row
+    get_row = cells.each_slice(@size).to_a
   end
 
   private

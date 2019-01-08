@@ -66,4 +66,23 @@ describe Board do
 
     expect(@board.clear_cell(@board.cells, move)).to eq([])
   end
+
+  context "finding cells with marker" do
+    it "returns cell indices given a marker" do
+      marker = "X"
+      cells = [ [], [], [], [], [], "#{marker}", "#{marker}", [], [] ]
+
+      filled_cells = [5, 6]
+      expect(@board.cells_marked_with(marker, cells)).to eq(filled_cells)
+    end
+
+    it "returns empty array if unknown marker" do
+      marker = "$"
+      cells = [ [], [], [],
+                [], [], [],
+                [], [], [] ]
+
+      expect(@board.cells_marked_with(marker, cells)).to eq([])
+    end
+  end
 end

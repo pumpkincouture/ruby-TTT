@@ -14,8 +14,8 @@ describe Rules do
                "#{o_marker}", "#{o_marker}", "#{x_marker}",
                "#{x_marker}", "#{x_marker}", "#{o_marker}"]
 
-     player_one_cells = @rules.cells_marked_with(x_marker, @board.cells)
-     player_two_cells = @rules.cells_marked_with(o_marker, @board.cells)
+     player_one_cells = @board.cells_marked_with(x_marker, @board.cells)
+     player_two_cells = @board.cells_marked_with(o_marker, @board.cells)
 
      expect(@rules.game_over?(player_one_cells, player_two_cells)).to be true
     end
@@ -29,8 +29,8 @@ describe Rules do
                "#{o_marker}", "#{o_marker}", [],
                [], [], []]
 
-     player_one_cells = @rules.cells_marked_with(x_marker, cells)
-     player_two_cells = @rules.cells_marked_with(o_marker, cells)
+     player_one_cells = @board.cells_marked_with(x_marker, cells)
+     player_two_cells = @board.cells_marked_with(o_marker, cells)
 
      expect(@rules.winner?(player_one_cells, player_two_cells)).to eq("Player One")
     end
@@ -42,18 +42,10 @@ describe Rules do
                "#{x_marker}", "#{x_marker}", [],
                [], [], []]
 
-     player_one_cells = @rules.cells_marked_with(x_marker, cells)
-     player_two_cells = @rules.cells_marked_with(o_marker, cells)
+     player_one_cells = @board.cells_marked_with(x_marker, cells)
+     player_two_cells = @board.cells_marked_with(o_marker, cells)
 
      expect(@rules.winner?(player_one_cells, player_two_cells)).to eq("Player Two")
     end
-  end
-
-  it "finds all the cells containing a certain marker" do
-    marker = "X"
-    cells = [ [], [], [], [], [], "#{marker}", "#{marker}", [], [] ]
-
-    filled_cells = [5, 6]
-    expect(@rules.cells_marked_with(marker, cells)).to eq(filled_cells)
   end
 end

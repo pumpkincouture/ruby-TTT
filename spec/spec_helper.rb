@@ -1,8 +1,11 @@
 require './lib/board.rb'
 require './lib/player.rb'
 require './lib/rules.rb'
-# require './lib/user_interface.rb'
-# require './lib/set_up.rb'
+require './lib/computer_player.rb'
+require './lib/human_player.rb'
+require './lib/ui.rb'
+require './lib/game_factory.rb'
+require './lib/markers.rb'
 # require_relative 'mock_ui'
 
 RSpec.configure do |config|

@@ -23,12 +23,4 @@ class Rules
     end
     return false
   end
-
-  def cells_marked_with(marker, cells)
-    spaces = []
-    cells.each_with_index do |cell, idx|
-      spaces << idx if cell == marker
-    end
-    spaces
-  end
 end
